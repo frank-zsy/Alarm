@@ -1,0 +1,27 @@
+{
+  "name": "san-alarm",
+  "version": "0.0.1",
+  "description": "san alarm",
+  "main": "app.js",
+  "scripts": {
+    "test": "grunt"
+  },
+  "dependencies": {
+    "async": "^1.5.2",
+    "bearcat": "0.4.x",
+    "ejs": "0.8.x",
+    "express": "4.14.x",
+    "fs-extra": "^0.18.4",
+    "node-statsd": "^0.1.1",
+    "nodemailer": "^2.3.2",
+    "optimist": "^0.6.1",
+    "pomelo-logger": "0.1.x",
+    "leveldb": "0.7.x"
+  },
+  "keywords": [
+    "san",
+    "alarm"
+  ],
+  "author": "frankzhao",
+  "license": "MIT"
+}
