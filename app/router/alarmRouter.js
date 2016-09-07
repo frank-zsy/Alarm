@@ -22,14 +22,16 @@ AlarmRouter.prototype.init = function () {
 
     var data = {};
     Object.keys(params).forEach(function (type) {
-      if (!self.$configService.dataConfig['alarmType'].contains(type)) return;
+      if (self.$configService.dataConfig['alarmType'].indexOf(type) === -1) return;
       Object.keys(params[type]).forEach(function (metric) {
         var metricName = type + '.' + metric;
         data[metricName] = params[type][metric];
       });
     });
 
-    logger.info(data);
+    self.$dataService.saveData(data, function (err) {
+      logger.info(JSON.stringify(self.$dataService.readData()));
+    });
 
     res.sendStatus(200);
   });
