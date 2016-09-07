@@ -24,7 +24,7 @@ MailService.prototype.send = function (content, cb) {
   option['subject'] = content['subject'];
   option['text'] = content['text'];
 
-  self.transporter.send(option, function (err, info) {
+  self.transporter.sendMail(option, function (err, info) {
     if (cb) cb(err, info);
     else if (err) logger.error(err);
   });
