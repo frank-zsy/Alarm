@@ -10,6 +10,7 @@ var ConfigService = function () {
   this.$init = "init";
   this.loadPath = process.cwd() + '/config/' + bearcat.getApplicationContext().getEnv() + '/';
   this.dataConfig = require(this.loadPath + 'data.json');
+  this.alarmConfig = require(this.loadPath + 'alarm.json');
 };
 
 ConfigService.prototype.init = function () {

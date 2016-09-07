@@ -29,9 +29,10 @@ AlarmRouter.prototype.init = function () {
       });
     });
 
-    self.$dataService.saveData(data, function (err) {
-      logger.info(JSON.stringify(self.$dataService.readData()));
-    });
+    // save data
+    self.$dataService.saveData(data);
+    // check data
+    self.$dataService.checkData();
 
     res.sendStatus(200);
   });
