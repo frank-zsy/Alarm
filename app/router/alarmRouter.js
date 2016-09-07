@@ -8,6 +8,8 @@ var express = require('express');
 var AlarmRouter = function() {
   this.$id = "alarmRouter";
   this.$init = "init";
+  this.$configService = null;
+  this.$dataService = null;
   this.router = null;
 };
 
@@ -17,7 +19,18 @@ AlarmRouter.prototype.init = function () {
 
   router.post('/data', function (req, res) {
     var params = req.body;
-    logger.info(JSON.stringify(params));
+
+    var data = {};
+    Object.keys(params).forEach(function (type) {
+      if (!self.$configService.dataConfig['alarmType'].contains(type)) return;
+      Object.keys(params[type]).forEach(function (metric) {
+        var metricName = type + '.' + metric;
+        data[metricName] = params[type][metric];
+      });
+    });
+
+    logger.info(data);
+
     res.sendStatus(200);
   });
 
