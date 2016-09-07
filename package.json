@@ -11,6 +11,7 @@
     "bearcat": "0.4.x",
     "ejs": "0.8.x",
     "express": "4.14.x",
+    "body-parser": "1.15.x",
     "fs-extra": "^0.18.4",
     "node-statsd": "^0.1.1",
     "nodemailer": "^2.3.2",

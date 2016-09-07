@@ -38,3 +38,6 @@ jspm_packages
 
 # Config files
 config
+
+# webstorm files
+.idea
