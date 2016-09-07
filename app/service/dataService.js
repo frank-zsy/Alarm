@@ -9,6 +9,7 @@ var DataService = function () {
   this.$id = "dataService";
   this.$init = 'init';
   this.$configService = null;
+  this.$mailService = null;
   this.data = null;
 };
 
@@ -48,6 +49,7 @@ DataService.prototype.checkData = function () {
     if (change) {} else {
       if (eval(condition)) {
         logger.info('Alarm! ' + condition + ' meet!');
+        self.$mailService.send({subject: "Alarm from sanl11", text: "Alarm triggered!"});
       }
     }
   });

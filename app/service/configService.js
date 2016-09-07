@@ -11,6 +11,7 @@ var ConfigService = function () {
   this.loadPath = process.cwd() + '/config/' + bearcat.getApplicationContext().getEnv() + '/';
   this.dataConfig = require(this.loadPath + 'data.json');
   this.alarmConfig = require(this.loadPath + 'alarm.json');
+  this.mailConfig = require(this.loadPath + 'mail.json');
 };
 
 ConfigService.prototype.init = function () {
