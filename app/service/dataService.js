@@ -43,7 +43,7 @@ DataService.prototype.checkData = function () {
       condition = 'val' + condition;
     }
 
-    var val = self.data[metric];
+    var val = self.data[metric][self.data[metric].length - 1];
 
     if (change) {} else {
       if (eval(condition)) {
