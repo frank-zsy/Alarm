@@ -26,6 +26,7 @@ MailService.prototype.send = function (content, cb) {
 
   self.transporter.sendMail(option, function (err, info) {
     if (cb) cb(err, info);
+
     else if (err) logger.error(err);
   });
 };

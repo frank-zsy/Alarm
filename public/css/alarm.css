@@ -1,0 +1,31 @@
+.select_metric{
+    font-size: 14px;
+    vertical-align: middle;
+}
+
+.input_condition{
+    font-size: 14px;
+    width: 100%;
+    vertical-align: middle;
+}
+
+.btn_delete{
+    vertical-align: middle;
+}
+
+#main_div{
+    background: #DADADA;
+}
+
+#setting_str{
+    font-size: 35px;
+    font-style: italic;
+}
+
+#btn_add,#btn_refresh,button{
+    margin: 10px;
+}
+
+#main_div{
+    margin-top: 20px;
+}

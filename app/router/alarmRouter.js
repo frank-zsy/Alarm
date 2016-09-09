@@ -41,6 +41,16 @@ AlarmRouter.prototype.init = function () {
     res.send('This is the config web page');
   });
 
+  router.get('/test', function (req, res) {
+    res.render('test');
+  });
+
+  router.get('/metrics', function (req, res) {
+    var data = self.$dataService.readData();
+    logger.info(JSON.stringify(data));
+    res.send({metrics: Object.keys(data)});
+  });
+
   self.router = router;
 };
 

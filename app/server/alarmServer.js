@@ -31,6 +31,9 @@ AlarmServer.prototype.init = function() {
   app.use(express.query());
 
   app.set('port', self.port);
+  app.set('views', process.cwd() + '/views');
+  app.set('view engine', 'pug');
+  app.use(express.static('public'));
   app.enable('trust proxy');
 
   app.use('/alarm', self.$alarmRouter.getRouter());
