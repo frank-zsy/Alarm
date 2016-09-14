@@ -54,17 +54,23 @@ AlarmRouter.prototype.init = function () {
   router.get('/alarmConfig', function (req, res) {
     var data = self.$dataService.readData();
     res.json({
-      metrics: [
-        "gauges.redis.miss.rate.redis-server-3",
-        "gauges.redis.net.in.redis-server-3",
-        "gauges.redis.miss.rate.redis-server-4"],
+      metrics: Object.keys(data),
       alarm: self.$configService.alarmConfig['alarmCondition']
     });
   });
 
   // Test setting page for alarm data
   router.post('/alarmConfig', function (req, res) {
-    self.$configService.alarmConfig.alarmCondition = req.body['data'];
+    var data = req.body['data'];
+    data.forEach(function (con) {
+      if (typeof con['change'] === 'string') {
+        con['change'] = (con['change'] === 'true');
+      } else if (typeof con['change'] !== 'boolean') {
+        con['change'] = false;
+      }
+    });
+    self.$configService.alarmConfig.alarmCondition = data;
+
     self.$configService.refreshConfig('alarm', function (err) {
       if (err) res.json({success: false});
       else res.json({success: true});
@@ -81,13 +87,39 @@ AlarmRouter.prototype.init = function () {
   router.post('/notifyConfig', function (req, res) {
     var config = req.body['config'];
     if (!config) return res.statusCode(404);
-    logger.info(JSON.stringify(config));
+
     self.$configService.notifyConfig['mail']['to'] = config['mail']['to'];
-    self.$configService.notifyConfig['mail']['interval'] = config['mail']['interval'];
-    self.$configService.notifyConfig['mail']['enable'] = config['mail']['enable'];
+    if (typeof config['mail']['interval'] === "string") {
+      self.$configService.notifyConfig['mail']['interval'] = parseInt(config['mail']['interval']);
+    } else if (typeof config['mail']['interval'] === "number") {
+      self.$configService.notifyConfig['mail']['interval'] = config['mail']['interval'];
+    } else {
+      self.$configService.notifyConfig['mail']['interval'] = 600;
+    }
+    if (typeof config['mail']['enable'] === "string") {
+      self.$configService.notifyConfig['mail']['enable'] = (config['mail']['enable'] === "true");
+    } else if (typeof config['mail']['enable'] === "boolean") {
+      self.$configService.notifyConfig['mail']['enable'] = config['mail']['enable'];
+    } else {
+      self.$configService.notifyConfig['mail']['enable'] = false;
+    }
+
     self.$configService.notifyConfig['sms']['to'] = config['sms']['to'];
-    self.$configService.notifyConfig['sms']['interval'] = config['sms']['interval'];
-    self.$configService.notifyConfig['sms']['to'] = config['sms']['to'];
+    if (typeof config['sms']['interval'] === "string") {
+      self.$configService.notifyConfig['sms']['interval'] = parseFloat(config['sms']['interval']);
+    } else if (typeof config['sms']['interval'] === "number") {
+      self.$configService.notifyConfig['sms']['interval'] = config['sms']['interval'];
+    } else {
+      self.$configService.notifyConfig['sms']['interval'] = 600;
+    }
+    if (typeof config['sms']['enable'] === "string") {
+      self.$configService.notifyConfig['sms']['enable'] = (config['sms']['enable'] === "true");
+    } else if (typeof config['sms']['enable'] === "boolean") {
+      self.$configService.notifyConfig['sms']['enable'] = config['sms']['enable'];
+    } else {
+      self.$configService.notifyConfig['sms']['enable'] = false;
+    }
+
     self.$configService.refreshConfig('notify', function (err) {
       if (err) res.json({success: false});
       else res.json({success: true});
