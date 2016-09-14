@@ -1,18 +1,51 @@
 extends ./common.pug
 
 block content
-    div(id='main_div' class='panel panel-primary col-xs-12 col-sm-12 col-md-10 col-md-offset-1 col-lg-6 col-lg-offset-3' style='border:2px solid black;height:800px;')
+    div(id='menu_div' class='panel panel-primary col-xs-2 col-sm-2 col-md-1 col-md-offset-1 col-lg-1 col-lg-offset-2')
+        div(id='menu_str') Menu
+        div(id='menu_alarm_setting' style='background:#f4f4f4') Alarm setting
+        div(id='menu_notify_setting') Notify setting
+    div(id='alarm_div' class='panel panel-primary col-xs-10 col-sm-10 col-md-9 col-lg-7')
         div()
-            p(id='setting_str' style='float:left;font-size:30px;') Setting
-            img(id='btn_add' src='/img/add.png' style='float:right')
-            img(id='btn_refresh' src='/img/refresh.png' style='float:right')
-        div(class='table-responsive' style='bottom:10%;margin-top:10px;margin-left:auto;margin-right:auto;width:100%;border:solid 1px;height:85%')
+            p(id='alarm_setting_str' class='setting_str' style='float:left;') Alarm Setting
+            button(id='btn_add' style='background-image:url("/img/add.png")' type='button')
+            button(id='btn_refresh' style='background-image:url("/img/refresh.png")' type='button')
+        div(class='table-responsive' style='bottom:10%;margin-top:10px;margin-left:auto;margin-right:auto;width:100%;border:solid 1px;height:80%')
             table(class='table table-bordered')
                 thead()
                     tr()
-                        th() Metric
+                        th() Metric Name
+                        th() Change Rate
                         th() Condition(eg. "val*val<20" or "val<10&&val>5")
                 tbody(id='settingTable')
         div()
-            button(id='btn_submit' class='btn btn-success col-xs-6 col-sm-5 col-sm-offset-1 col-md-4 col-md-offset-2 col-lg-3 col-lg-offset-3' type='button') 提交
-            button(id='btn_restore' class='btn btn-danger col-xs-6 col-sm-5 col-md-4 col-lg-3' type='button') 复原
+            button(id='btn_alarm_submit' class='btn btn-success col-xs-6 col-sm-5 col-sm-offset-1 col-md-4 col-md-offset-2 col-lg-3 col-lg-offset-3' type='button') Submit
+            button(id='btn_alarm_restore' class='btn btn-danger col-xs-6 col-sm-5 col-md-4 col-lg-3' type='button') Restore
+    div(id='notify_div' class='panel panel-primary col-xs-10 col-sm-10 col-md-9 col-lg-7')
+        div()
+            p(id='notify_setting_str' class='setting_str') Notify Setting
+        fieldset(class='fieldset-1')
+            legend(class='legend-1') Email
+            input(id='checkbox_email' type='checkbox')
+            lable(class='label label-checkbox') Enable
+            lable(class='label label-checkbox') Interval:(seconds)
+            input(id='input_email_interval')
+            fieldset(id='fieldset_email' class='fieldset-2')
+                legend(class='legend-2') Receiver
+                div()
+                    label(class='label label-default label-input') To
+                    img(id='img_add_email' src='/img/add.png')
+        fieldset(class='fieldset-1')
+            legend(class='legend-1') SMS
+            input(id='checkbox_sms' type='checkbox')
+            lable(class='label label-checkbox') Enable
+            lable(class='label label-checkbox') Interval:(seconds)
+            input(id='input_sms_interval')
+            fieldset(id='fieldset_sms' class='fieldset-2')
+                legend(class='legend-2') Receiver
+                div()
+                    label(class='label label-default label-input') To
+                    img(id='img_add_sms' src='/img/add.png')
+        div()
+            button(id='btn_notify_submit' class='btn btn-success col-xs-6 col-sm-5 col-sm-offset-1 col-md-4 col-md-offset-2 col-lg-3 col-lg-offset-3' type='button') Submit
+            button(id='btn_notify_restore' class='btn btn-danger col-xs-6 col-sm-5 col-md-4 col-lg-3' type='button') Restore

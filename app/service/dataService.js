@@ -49,7 +49,7 @@ DataService.prototype.checkData = function () {
     if (change) {} else {
       if (eval(condition)) {
         logger.info('Alarm! ' + condition + ' meet!');
-        self.$mailService.send({subject: "Alarm from sanl11", text: "Alarm triggered!"});
+        //self.$mailService.send({subject: "Alarm from sanl11", text: "Alarm triggered!"});
       }
     }
   });

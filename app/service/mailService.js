@@ -13,13 +13,14 @@ var MailService = function () {
 
 MailService.prototype.init = function () {
   var self = this;
-  var mailConfig = self.$configService.mailConfig;
+  var mailConfig = self.$configService.notifyConfig['mail'];
   self.transporter = nodemailer.createTransport(mailConfig['config']);
 };
 
 MailService.prototype.send = function (content, cb) {
   var self = this;
-  var option = self.$configService.mailConfig['option'];
+  var option = self.$configService.notifyConfig['mail']['option'];
+  option['from'] = self.$configService.notifyConfig['mail']['config']['from'];
 
   option['subject'] = content['subject'];
   option['text'] = content['text'];
