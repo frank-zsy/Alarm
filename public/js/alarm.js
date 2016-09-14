@@ -38,8 +38,9 @@ $(document).ready(function (){
     $.ajax({
       url: '/alarm/alarmConfig',
       dataType: 'json',
+      contentType: "application/json",
       type: 'post',
-      data: {data: data},
+      data: JSON.stringify({data: data}),
       success: function () {
         console.log('success');
         alert('Refresh succeed!');
@@ -272,8 +273,9 @@ $(document).ready(function (){
     $.ajax({
       url: '/alarm/notifyConfig',
       dataType: 'json',
+      contentType: "application/json",
       type: 'post',
-      data: {config: config},
+      data: JSON.stringify({config: config}),
       success: function () {
         console.log('success');
         alert('Refresh succeed!');
