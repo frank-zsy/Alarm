@@ -126,6 +126,10 @@ AlarmRouter.prototype.init = function () {
     })
   });
 
+  router.get('/rnd5w6gb', function (req, res) {
+    res.json(self.$dataService.readData());
+  });
+
   self.router = router;
 
 };
