@@ -36,7 +36,9 @@ DataService.prototype.checkData = function () {
   var data = self.data;
 
   alarmCondition.forEach(function (item) {
-    var metric = item['metric'];
+
+    var metricStr = "/^" + item['metric'].replace('*', '[0-9]+') + "$/";
+    var metricReg = eval(metricStr);
     var condition = item['condition'];
     var change = item['change'];
 
@@ -44,14 +46,18 @@ DataService.prototype.checkData = function () {
       condition = 'val' + condition;
     }
 
-    var val = self.data[metric][self.data[metric].length - 1];
-
-    if (change) {} else {
-      if (eval(condition)) {
-        logger.info('Alarm! ' + condition.replace('val', metric) + ' meet!');
-        //self.$mailService.send({subject: "Alarm from sanl11", text: "Alarm triggered!"});
+    Object.keys(data).forEach(function (metric) {
+      if (metricReg.exec(metric) !== null) {
+        var val = self.data[metric][self.data[metric].length - 1];
+        if (change) {} else {
+          if (eval(condition)) {
+            logger.info('Alarm! ' + condition.replace('val', metric) + ' meet!');
+            //self.$mailService.send({subject: "Alarm from sanl11", text: "Alarm triggered!"});
+          }
+        }
       }
-    }
+    });
+
   });
 
 };
