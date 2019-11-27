@@ -1,0 +1,8 @@
+{
+  "label-setup": {
+    "enable": true
+  },
+  "issue-auto-label": {
+    "enable": true
+  }
+}
