@@ -1,7 +1,8 @@
 -- Auto label on issue open
 
-print(io)
-print(os)
+local t= io.popen('ls -l')
+local a = t:read("*all")
+print(a)
 
 on('IssueEvent', function (e)
   if(e.action == 'opened') then
