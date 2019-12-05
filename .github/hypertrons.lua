@@ -1,3 +1,6 @@
 on('IssueEvent', function (e)
-  addLabel(e.number, 'label-test')
+  if (e.action == 'opened')
+  then   
+    addLabel(e.number, 'label-test')
+  end
 end)
