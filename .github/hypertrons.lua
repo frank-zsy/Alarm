@@ -12,6 +12,7 @@ on('IssueEvent', function (e)
       end
     end
     if(#l > 0) then
+      log('Gonna add', #l, 'labels to', e.number)
       addLabels(e.number, l)
     end
   end
