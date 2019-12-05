@@ -1,4 +1,10 @@
 -- Auto label on issue open
+
+file = io.open("/Users/frankzhao/workspace/oss-mentor-bot/.github/hypertrons.lua", "r")
+io.input(file)
+print(io.read())
+io.close(file)
+
 on('IssueEvent', function (e)
   if(e.action == 'opened') then
     local l = {}
