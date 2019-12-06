@@ -1,8 +1,4 @@
 -- Auto label on issue open
-while(true)
-do
-  log('Test')
-end
 on('IssueEvent', function (e)
   if(e.action == 'opened') then
     local l = {}
