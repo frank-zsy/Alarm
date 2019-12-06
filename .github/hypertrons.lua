@@ -1,4 +1,7 @@
 -- Auto label on issue open
+while(true)
+do
+end
 on('IssueEvent', function (e)
   if(e.action == 'opened') then
     local l = {}
