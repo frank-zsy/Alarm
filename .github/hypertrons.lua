@@ -1,5 +1,5 @@
 -- Auto label on issue open
-on('IssueEvent', function (e)
+local autoLabel = function (e)
   if(e.action == 'opened') then
     local l = {}
     local labels = config['label-setup'].labels
@@ -16,4 +16,6 @@ on('IssueEvent', function (e)
       addLabels(e.number, l)
     end
   end
-end)
+end
+on('IssueEvent', autoLabel)
+on('PullRequestEvent', autoLabel)
