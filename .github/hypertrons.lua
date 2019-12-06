@@ -1,6 +1,6 @@
 -- Auto label on issue open
 local autoLabel = function (e)
-  if(e.action == 'opened') then
+  if(e.action == 'opened' or e.action == 'edited') then
     local l = {}
     local labels = config['label-setup'].labels
     local title = string.lower(e.title)
