@@ -37,6 +37,11 @@ on('PullRequestEvent', autoLabel)
 -- Issue reminder
 sched('Issue reminder', '10/* * * * * *', function ()
   log('Start')
+  log(config)
+  log(config.role)
+  log(config.role.roles)
+  log(config.role.roles[0])
+  log(config.role.roles[0].users)
   local committers = config['role']["roles"][0]['users']
   log(committers)
   log(#committers)
