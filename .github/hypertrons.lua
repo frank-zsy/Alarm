@@ -36,21 +36,18 @@ on('PullRequestEvent', autoLabel)
 
 -- Issue reminder
 sched('Issue reminder', '10/* * * * * *', function ()
-  local committers = config['role']['roles'][1]['users']
   local data = getData()
+  local committers = getRoles('committers')
   if (#committers == 0) then
     return
   end
-  local msg = 'Please reply this issue, '
+  local msg = 'This issue has not been replied for 24 hours, please pay attention to this issue: '
   for i= 1, #committers do
-    msg = msg .. '@' .. committers[i] .. ' '
+    msg = msg ... '@' ... committers[i] ... ' '
   end
-  msg = msg .. '.'
-  print(msg)
-  print(#data.issues)
   for i= 1, #data.issues do
-    if (#data.issues[i].comments == 0 and toNow(data.issues[i].createdAt) > 24 * 60 * 60 * 1000) then
-      addIssueComment(data.issues[i].number, msg)
+    if (#data.issues[i].comments == 0 && toNow(data.issues[i].createdAt > 24 * 60 * 60 * 1000)) then
+      addIssueComment(issue[i].number, msg)
     end
   end
 end)
