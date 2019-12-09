@@ -37,7 +37,7 @@ on('PullRequestEvent', autoLabel)
 -- Issue reminder
 sched('Issue reminder', '10/* * * * * *', function ()
   local data = getData()
-  local committers = config['role']['committers']
+  local committers = config['roles']['maintainer']
   if (#committers == 0) then
     return
   end
