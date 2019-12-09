@@ -1,5 +1,8 @@
 {
-  "roles": {
-    "maintainer": [ "Frankzhaopku" ]
+  "role": {
+    "roles": [
+      "name": "maintainer",
+      "users": [ "Frankzhaopku" ]
+    ]
   }
 }
