@@ -40,9 +40,9 @@ sched('Issue reminder', '10/* * * * * *', function ()
   print(config)
   print(config.role)
   print(config.role.roles)
-  print(config.role.roles[0])
-  print(config.role.roles[0].users)
-  local committers = config['role']["roles"][0]['users']
+  print(config.role.roles[1])
+  print(config.role.roles[1].users)
+  local committers = config['role']['roles'][1]['users']
   print(committers)
   print(#committers)
   local data = getData()
