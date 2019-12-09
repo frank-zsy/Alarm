@@ -37,8 +37,11 @@ on('PullRequestEvent', autoLabel)
 -- Issue reminder
 sched('Issue reminder', '10/* * * * * *', function ()
   local data = getData()
-  local committers = getRoles('maintainer')
-  if (#committers == 0) then
+  if (data == nil) then -- data not ready yet
+    return
+  end
+  local maintainers = getRoles('maintainer')
+  if (#maintainers == 0) then
     return
   end
   local msg = 'This issue has not been replied for 24 hours, please pay attention to this issue: '
@@ -46,7 +49,7 @@ sched('Issue reminder', '10/* * * * * *', function ()
     msg = msg .. '@' .. committers[i] .. ' '
   end
   for i= 1, #data.issues do
-    if (#data.issues[i].comments == 0 and toNow(data.issues[i].createdAt > 24 * 60 * 60 * 1000)) then
+    if (#data.issues[i].comments == 0 and toNow(data.issues[i].createdAt) > 24 * 60 * 60 * 1000) then
       addIssueComment(issue[i].number, msg)
     end
   end
