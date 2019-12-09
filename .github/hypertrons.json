@@ -1,5 +1,5 @@
 {
-  "role": {
-    "committers": [ "Frankzhaopku" ]
+  "roles": {
+    "maintainer": [ "Frankzhaopku" ]
   }
 }
