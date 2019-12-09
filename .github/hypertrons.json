@@ -7,4 +7,5 @@
       }
     ]
   }
+  "lua": ".github/hypertrons.lua"
 }
