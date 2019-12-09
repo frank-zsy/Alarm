@@ -36,17 +36,17 @@ on('PullRequestEvent', autoLabel)
 
 -- Issue reminder
 sched('Issue reminder', '10/* * * * * *', function ()
-  log('Start')
-  log(config)
-  log(config.role)
-  log(config.role.roles)
-  log(config.role.roles[0])
-  log(config.role.roles[0].users)
+  print('Start')
+  print(config)
+  print(config.role)
+  print(config.role.roles)
+  print(config.role.roles[0])
+  print(config.role.roles[0].users)
   local committers = config['role']["roles"][0]['users']
-  log(committers)
-  log(#committers)
+  print(committers)
+  print(#committers)
   local data = getData()
-  log(data)
+  print(data)
   if (#committers == 0) then
     return
   end
@@ -55,8 +55,8 @@ sched('Issue reminder', '10/* * * * * *', function ()
     msg = msg .. '@' .. committers[i] .. ' '
   end
   msg = msg .. '.'
-  log(msg)
-  log(#data.issues)
+  print(msg)
+  print(#data.issues)
   for i= 1, #data.issues do
     if (#data.issues[i].comments == 0 and toNow(data.issues[i].createdAt > 24 * 60 * 60 * 1000)) then
       addIssueComment(issue[i].number, msg)
