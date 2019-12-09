@@ -43,9 +43,9 @@ sched('Issue reminder', '10/* * * * * *', function ()
   end
   local msg = 'Please reply this issue, '
   for i= 1, #committers do
-    msg = msg ... '@' ... committers[i] ... ' '
+    msg = msg .. '@' .. committers[i] .. ' '
   end
-  msg = msg ... '.'
+  msg = msg .. '.'
   for i= 1, #data.issues do
     if (#data.issues[i].comments == 0 && toNow(data.issues[i].createdAt > 24 * 60 * 60 * 1000)) then
       addIssueComment(issue[i].number, msg)
