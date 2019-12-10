@@ -57,9 +57,9 @@ end)
 
 -- Priority command
 on('CommandEvent', function (e)
-  if (e.command == 'priority') then
+  if (e.command == 'difficulty') then
     local level = e.params[1]
-    local label = e.command .. '/' .. level
+    local label = 'difficulty/' .. level
     local labels = config['label-setup'].labels
     if (arrayContains(lables, function (l)
       return l.name == label
