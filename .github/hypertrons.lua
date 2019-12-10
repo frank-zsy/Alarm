@@ -57,6 +57,7 @@ end)
 
 -- Priority command
 on('CommandEvent', function (e)
+  log(e)
   if (e.command == 'difficulty') then
     local level = e.params[1]
     local label = 'difficulty/' .. level
