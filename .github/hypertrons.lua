@@ -57,11 +57,11 @@ end)
 
 -- Priority command
 on('CommandEvent', function (e)
-  log(e)
   if (e.command == '/difficulty') then
     local level = e.params[1]
     local label = 'difficulty/' .. level
     local labels = config['label-setup'].labels
+    log(labels, label)
     if (arrayContains(lables, function (l)
       return l.name == label
     end)) then
