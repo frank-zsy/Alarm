@@ -68,3 +68,25 @@ on('CommandEvent', function (e)
     end
   end
 end)
+
+-- Approve command, add pull/approved label
+on('CommandEvent', function (e)
+  if (e.command == '/approve') then
+    addLabels(e.number, { 'pull/approved' })
+  end
+end)
+
+-- Auto merge pull by approve command, check every minute
+sched('Auto_merge', '0 */1 * * * *', function ()
+  local data = getData()
+  if (data == nil) then -- data not ready yet
+    return
+  end
+  for i= 1, #data.pulls do
+    local pull = data.pulls[i]
+    -- if the pull is still open and have pull/approved label, try merge it
+    if (pull.closedAt == nil and string.find(pull.labels, 'pull/approved') ~= nil) then
+      merge(pull.number)
+    end
+  end
+end)
