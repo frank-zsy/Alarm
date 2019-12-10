@@ -88,7 +88,7 @@ sched('Auto_merge', '0 0 */1 * * *', function ()
     -- if the pull is still open and have pull/approved label, try merge it
     if (pull.closedAt == nil and arrayContains(pull.labels, function (l)
       return l == approveLabel
-    end) then
+    end)) then
       merge(pull.number)
     end
   end
