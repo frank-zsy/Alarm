@@ -42,7 +42,7 @@
         "name": "committer",
         "description": "Committer of the project",
         "users": [ "Frankzhaopku", "WuShaoling", "GoodMeowing", "heming6666", "liwen-tj" ],
-        "commands": [ "difficulty" ]
+        "commands": [ "/difficulty" ]
       },
       {
         "name": "replier",
