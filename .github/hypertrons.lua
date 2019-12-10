@@ -26,7 +26,6 @@ local autoLabel = function (e)
       end
     end
     if(#l > 0) then
-      log('Gonna add', #l, 'labels to', e.number)
       addLabels(e.number, l)
     end
   end
@@ -35,12 +34,12 @@ on('IssueEvent', autoLabel)
 on('PullRequestEvent', autoLabel)
 
 -- Issue reminder
-sched('Issue reminder', '10/* * * * * *', function ()
+sched('Issue reminder', '0 0 9 * * *', function ()
   local data = getData()
   if (data == nil) then -- data not ready yet
     return
   end
-  local users = getRoles('maintainer')
+  local users = getRoles('replier')
   if (#users == 0) then
     return
   end
@@ -52,6 +51,20 @@ sched('Issue reminder', '10/* * * * * *', function ()
     local issue = data.issues[i]
     if (#issue.comments == 0 and toNow(issue.createdAt) > 24 * 60 * 60 * 1000) then
       addIssueComment(issue.number, msg)
+    end
+  end
+end)
+
+-- Priority command
+on('CommandEvent', function (e)
+  if (e.command == 'priority') then
+    local level = e.params[1]
+    local label = e.command .. '/' .. level
+    local labels = config['label-setup'].labels
+    if (arrayContains(lables, function (l)
+      return l.name == label
+    end)) then
+      addLabels(e.number, { label })
     end
   end
 end)
