@@ -61,7 +61,9 @@ on('CommandEvent', function (e)
     local level = e.params[1]
     local label = 'difficulty/' .. level
     local labels = config['label-setup'].labels
-    log(labels, label)
+    print(label)
+    print(labels)
+    print(#labels)
     if (arrayContains(lables, function (l)
       return l.name == label
     end)) then
