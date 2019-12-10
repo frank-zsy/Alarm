@@ -86,6 +86,7 @@ sched('Auto_merge', '0 0 */1 * * *', function ()
   for i= 1, #data.pulls do
     local pull = data.pulls[i]
     -- if the pull is still open and have pull/approved label, try merge it
+    print(pull.number, pull.closedAt)
     if (pull.closedAt == nil and arrayContains(pull.labels, function (l)
       return l == approveLabel
     end)) then
