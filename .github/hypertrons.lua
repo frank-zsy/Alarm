@@ -80,6 +80,8 @@ end)
 -- Auto merge pull by approve command, check every hour
 sched('Auto_merge', '0 */1 * * * *', function ()
   local data = getData()
+  log(data)
+  print(data)
   if (data == nil) then -- data not ready yet
     return
   end
