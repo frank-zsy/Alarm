@@ -78,7 +78,7 @@ on('CommandEvent', function (e)
 end)
 
 -- Auto merge pull by approve command, check every hour
-sched('Auto_merge', '0 */1 * * * *', function ()
+sched('Auto_merge', '*/20 * * * * *', function ()
   local data = getData()
   log(data)
   print(data)
