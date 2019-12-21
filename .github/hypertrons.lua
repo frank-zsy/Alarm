@@ -80,11 +80,11 @@ end)
 -- Auto merge pull by approve command, check every hour
 sched('Auto_merge', '*/20 * * * * *', function ()
   local data = getData()
-  print(data)
-  log(data)
   if (data == nil) then -- data not ready yet
     return
   end
+  print(data)
+  print(data.pulls)
   for i= 1, #data.pulls do
     local pull = data.pulls[i]
     -- if the pull is still open and have pull/approved label, try merge it
