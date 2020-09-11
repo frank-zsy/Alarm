@@ -1,66 +1,7 @@
 {
-  "label_setup": {
-    "version": 1,
-    "labels": [
-      {
-        "__merge__": true
-      },
-      {
-        "name": "difficulty/1",
-        "description": "Difficulty score for issue or pull, 1 score",
-        "color": "008672"
-      },
-      {
-        "name": "difficulty/2",
-        "description": "Difficulty score for issue or pull, 2 score",
-        "color": "f1ee18"
-      },
-      {
-        "name": "difficulty/3",
-        "description": "Difficulty score for issue or pull, 3 score",
-        "color": "67a8f7"
-      },
-      {
-        "name": "difficulty/5",
-        "description": "Difficulty score for issue or pull, 5 score",
-        "color": "f7be99"
-      },
-      {
-        "name": "difficulty/8",
-        "description": "Difficulty score for issue or pull, 8 score, should split the issue",
-        "color": "e11d21"
-      }
-    ]
-  },
-  "role": {
-    "version": 1,
-    "roles": [
-      {
-        "name": "committer",
-        "description": "Committer of the project",
-        "users": [ "frank-zsy" ],
-        "commands": [ "/difficulty" ]
-      },
-      {
-        "name": "notauthor",
-        "description": "Not author of the issue or pull",
-        "users": [],
-        "commands": []
-      },
-      {
-        "name": "anyone",
-        "description": "Anyone",
-        "users": [],
-        "commands": []
-      }
-    ]
-  },
-  "command": {
-    "version": 1
-  },
   "auto_update_contribution": {
     "version": 1,
-    "sched": "*/30 * * * * *",
+    "sched": "0 0 22 * * *",
     "roles": ["contributor", "participant", "follower"]
   }
 }
