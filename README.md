@@ -1,6 +1,8 @@
 # Alarm
+
+![license](http://github.zhangqx.com/file-checker/github/frank-zsy/Alarm?path=LICENSE)
+![readme](http://github.zhangqx.com/file-checker/github/frank-zsy/Alarm?path=README.md)
+![contributing](http://github.zhangqx.com/file-checker/github/frank-zsy/Alarm?path=CONTRIBUTING.md)
+![coc](http://github.zhangqx.com/file-checker/github/frank-zsy/Alarm?path=CODE_OF_CONDUCT.md)
+
 Alarm for statsd backend with express, bearcat &amp; leveldb
-
-<img src='http://api.hypertrons.io/docs/github/oss-mentor-bot/hypertrons/community.svg' width:520 />
-
-![image](./a.svg?sanitize=true)
