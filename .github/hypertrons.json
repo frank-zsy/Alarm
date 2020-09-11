@@ -60,7 +60,7 @@
   },
   "auto_update_contribution": {
     "version": 1,
-    "sched": "0 */2 * * * *",
+    "sched": "*/30 * * * * *",
     "roles": ["contributor", "participant", "follower"]
   }
 }
