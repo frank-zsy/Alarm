@@ -4,6 +4,6 @@
 ![readme](http://github.zhangqx.com/file-checker/github/frank-zsy/Alarm?path=README.md)
 ![contributing](http://github.zhangqx.com/file-checker/github/frank-zsy/Alarm?path=CONTRIBUTING.md)
 ![coc](http://github.zhangqx.com/file-checker/github/frank-zsy/Alarm?path=CODE_OF_CONDUCT.md)
-![a](http://github.zhangqx.com/file-checker/github/frank-zsy/Alarm?path=a.txt)
+![b](http://github.zhangqx.com/file-checker/github/frank-zsy/Alarm?path=b.txt)
 
 Alarm for statsd backend with express, bearcat &amp; leveldb
